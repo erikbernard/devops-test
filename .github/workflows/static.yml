@@ -29,7 +29,7 @@ jobs:
           git config --local user.name "${{ secrets.GIT_USERNAME }}"
           git add index.html
           git commit -m "Add current date to index.html"
-          git push https://${{ secrets.GIT_USERNAME }}:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ secrets.GIT_USERNAME }}/devops-test.git main
+          git push https://github.com/${{ secrets.GIT_USERNAME }}/devops-test.git HEAD:main --token ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
   report-build-status:
     runs-on: ubuntu-latest
