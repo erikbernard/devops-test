@@ -3,7 +3,6 @@ name: Deploy
 on:
   push:
     branches: ["main"]
-
   workflow_dispatch:
 
 permissions:
@@ -27,11 +26,11 @@ jobs:
         run: |
           echo "<!DOCTYPE html><html><head><title>Sample Page</title></head><body><h1>Welcome to GitHub Pages!</h1><p>Deployed at: $(date)</p></body></html>" > index.html
           git config --local user.email "${{ secrets.GIT_EMAIL }}"
-      	  git config --local user.name "${{ secrets.GIT_USERNAME }}"
+          git config --local user.name "${{ secrets.GIT_USERNAME }}"
           git add index.html
           git commit -m "Add current date to index.html"
-          it push https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_TOKEN }}@github.com/devops-test.git 
-          
+          git push https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_TOKEN }}@github.com/devops-test.git 
+
   report-build-status:
     runs-on: ubuntu-latest
     steps:
